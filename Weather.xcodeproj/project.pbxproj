@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6961CA262DA160CD00247544 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 6961CA252DA160CD00247544 /* BottomSheet */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		694F77332D9F282500A3C471 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6961CA262DA160CD00247544 /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = Weather;
 			packageProductDependencies = (
+				6961CA252DA160CD00247544 /* BottomSheet */,
 			);
 			productName = Weather;
 			productReference = 694F77222D9F282400A3C471 /* Weather.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 694F77192D9F282400A3C471;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6961CA242DA160CD00247544 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 694F77232D9F282400A3C471 /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6961CA242DA160CD00247544 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Wouter125/BottomSheet.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6961CA252DA160CD00247544 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6961CA242DA160CD00247544 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 694F771A2D9F282400A3C471 /* Project object */;
 }

@@ -6,36 +6,73 @@
 //
 
 import SwiftUI
+import BottomSheet
+
+enum BottomSheetPosition: CGFloat, CaseIterable {
+    case top = 0.83  // 702/844
+    case middle = 0.385  // 325/844
+}
 
 struct HomeView: View {
+    @State private var isPresented = true
+    @State private var selectedDetent: BottomSheet.PresentationDetent = .large
+        @State private var sheetPosition: BottomSheetPosition = .middle
+    
     var body: some View {
-        ZStack {
-            Color.backgroundGrad
-                .ignoresSafeArea()
-            
-            Image("Background")
-                .resizable()
-                .ignoresSafeArea()
-            
-            Image("House")
-                .frame(maxHeight: .infinity, alignment: .top)
-                .padding(.top, 257)
-            
-            VStack {
-                Text("Cairo")
-                    .font(.largeTitle)
+        NavigationView {
+            ZStack {
+                Color.backgroundGrad
+                    .ignoresSafeArea()
+                
+                Image("Background")
+                    .resizable()
+                    .ignoresSafeArea()
+                
+                Image("House")
+                    .frame(maxHeight: .infinity, alignment: .top)
+                    .padding(.top, 257)
                 
                 VStack {
+                    Text("Cairo")
+                        .font(.largeTitle)
                     
-                    Text(attributedString)
+                    VStack {
+                        
+                        Text(attributedString)
+                        
+                        Text("H:24°   L:18°")
+                            .font(.title3.weight(.semibold))
+                    }
                     
-                    Text("H:24°   L:18°")
-                        .font(.title3.weight(.semibold))
+                    Spacer()
                 }
+                .padding(.top, 51)
                 
-                Spacer()
+                VStack {}
+                  .sheetPlus(
+                      isPresented: $isPresented,
+                      background: Color.clear,
+                      onDrag: { translation in
+                          print("Dragged to: \(translation)")
+                      },
+                      main: {
+                          ForecastView()
+                              .frame(height: 400)
+                          .presentationDetentsPlus(
+                              [
+//                                .height(400),
+                                .height(400),
+                              ],
+                              selection: $selectedDetent
+                          )
+                          .presentationDragIndicatorPlus(.hidden)
+                          .presentationBackgroundInteractionPlus(.enabled)
+                      }
+                  )
+                
+                TabBar(action: {})
             }
-            .padding(.top, 51)
+            .navigationBarHidden(true)
         }
     }
     
