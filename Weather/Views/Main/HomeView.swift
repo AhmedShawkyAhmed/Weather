@@ -15,7 +15,7 @@ enum BottomSheetPosition: CGFloat, CaseIterable {
 
 struct HomeView: View {
     @State private var isPresented = true
-    @State private var selectedDetent: BottomSheet.PresentationDetent = .large
+    @State private var selectedDetent: BottomSheet.PresentationDetent = .small
         @State private var sheetPosition: BottomSheetPosition = .middle
     
     var body: some View {
@@ -49,26 +49,25 @@ struct HomeView: View {
                 .padding(.top, 51)
                 
                 VStack {}
-                  .sheetPlus(
-                      isPresented: $isPresented,
-                      background: Color.clear,
-                      onDrag: { translation in
-                          print("Dragged to: \(translation)")
-                      },
-                      main: {
-                          ForecastView()
-                              .frame(height: 400)
-                          .presentationDetentsPlus(
-                              [
-//                                .height(400),
-                                .height(400),
-                              ],
-                              selection: $selectedDetent
-                          )
-                          .presentationDragIndicatorPlus(.hidden)
-                          .presentationBackgroundInteractionPlus(.enabled)
-                      }
-                  )
+                .sheetPlus(
+                    isPresented: $isPresented,
+                    background: Color.clear,
+                    onDrag: { translation in
+                        print("Dragged to: \(translation)")
+                    },
+                    main: {
+                        ForecastView()
+                            .presentationDetentsPlus(
+                                [
+                                    .fraction(0.385),
+                                    .fraction(0.90)
+                                ],
+                                selection: $selectedDetent
+                            )
+                            .presentationDragIndicatorPlus(.hidden)
+                            .presentationBackgroundInteractionPlus(.enabled)
+                    }
+                )
                 
                 TabBar(action: {})
             }
